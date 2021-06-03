@@ -26,6 +26,12 @@
     <h1>Helth.io +</h1>
     <h3 id="time"></h3>
   </header>
+
+  <div class="legend">
+    <p><div class="legend-healthy">121</div><b>Healthy:</b> Heart = 70, SpO2 > 95, Temp < 100</p>
+    <p><div class="legend-mild">121</div><b>Mild:</b> Heart = 70, SpO2 < 95, Temp > 100</p>
+    <p><div class="legend-severe">111</div><b>Severe:</b> SpO2 < 90, Temp > 102</90></p>
+  </div>
   
   <form id="add-patient-form">
     <div class="form-group">
@@ -63,9 +69,7 @@
       <th>Date of record</th>
       <th>Condition of the patient</th>
     </thead>
-    <tbody id="tbody">
-      
-    </tbody>
+    <tbody id="tbody"></tbody>
   </table>
 
   <footer>

@@ -15,6 +15,36 @@ body {
     margin-bottom: 20px;
     padding: 10px;
   }
+
+  .legend{
+    float: right;
+    margin-right: 100px;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .legend-healthy{
+    background-color: #5cb85c;
+    display: inline;
+    color: #5cb85c; 
+    margin: 5px;
+  }
+
+  .legend-mild{
+    background-color: #f0ad4e;
+    display: inline;
+    color: #f0ad4e; 
+    margin: 5px;
+  }
+
+  .legend-severe{
+    background-color: #d9534f;
+    display: inline;
+    color: #d9534f; 
+    margin: 5px;
+  }
   
   input{
     display: block;

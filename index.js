@@ -80,7 +80,7 @@ form.addEventListener('submit', (e) => {
     oxygen: form.oxygen.value,
     temp: form.temp.value,
     dor: setRecord(),
-    cond: setCondition(form.temp.value, form.oxygen.value, form.heart.value)
+    cond: setCondition(form.temp.value, form.oxygen.value, form.heart.valueddd)
   });
   form.patientID.value='';
   form.name.value='';
