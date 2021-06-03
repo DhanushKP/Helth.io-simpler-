@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Helth.io</title>
+      <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head >
+<body>
+    <style type="text/css">
+
+      h1{
+        text-align: center;
+        margin: 50px; 
+        color:white; 
+        background: blue; 
+        width: 55%;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      form{
+        width: 30%;
+      }
+
+    </style>
+<div class="container">
+  <h1>Helth.io +</h1>
+  <form>
+    <div class="form-group">
+      <label>Patient ID</label>
+      <input type="number" name="id" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label>Patient Name</label>
+      <input type="text" name="name" class="form-control"  required="">
+    </div>
+    <div class="form-group">
+      <label>Heart Rate</label>
+      <input type="number" name="heart" class="form-control" value="Heart rate" required="">
+    </div>
+    <div class="form-group">
+      <label>Blood Oxygen Level</label>
+      <input type="number" name="oxygen" class="form-control" value="SP02 level" required="">
+    </div>
+    <div class="form-group">
+      <label>Body temperature</label>
+      <input type="number" name="temp" class="form-control" value="deg C" required="">
+    </div>
+    <div class="form-group">
+      <label>Date of Record</label>
+      <input type="date" name="dor" class="form-control" value="TOR" required="">
+    </div>
+    <div class="form-group">
+      <label>Condition of the patient</label>
+      <input type="text" name="cond" class="form-control"  required="">
+    </div>
+    <button type="submit" class="btn btn-success btn-save">Save</button>
+  </form><br>
+  <table class="table table-bordered data-table">
+    <thead>
+      <th>Patient ID</th>
+      <th>Patient Name</th>
+      <th>Heart Rate</th>
+      <th>SpO2 Level</th>
+      <th>Body Temperature</th>
+      <th>Date of record</th>
+      <th>Condition of the patient</th>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+
+</div>
+   <script type="text/javascript">
+    $("form").submit(function(e) {
+      e.preventDefault();
+      var id=$("input[name='id']").val();
+      var name=$("input[name='name']").val();
+      var heart=$("input[name='heart']").val();
+      var oxygen=$("input[name='oxygen']").val();
+      var temp=$("input[name='temp']").val();
+      var dor=$("input[name='dor']").val();
+      var cond=$("input[name='cond']").val();
+
+       $(".data-table tbody").append("<tr data-id='"+id+"' data-name='"+name+"' data-heart='"+heart+"' data-oxygen='"+oxygen+"' data-temp='"+temp+"' data-dor='"+dor+"' data-cond='"+cond+"'><td>"+id+"</td><td>"+name+"</td> <td>"+heart+"</td> <td>"+oxygen+"</td> <td>"+temp+"</td> <td>"+dor+"</td> <td>"+cond+"</td><td><button class='btn btn-danger btn-lg btn-delete mr-3' type='button'>Delete</button><button class='btn btn-info btn-lg btn-edit' type='button'>Edit</button></td></tr>");
+
+       $("input[name='']").val("");
+    });
+
+    $('body').on('click','.btn-delete',function() {
+      $(this).parents('tr').remove();
+    });
+
+    $('body').on('click','.btn-edit',function() {
+      var id=$(this).parents('tr').attr('data-id');
+      var name=$(this).parents('tr').attr('data-name');
+      var heart=$(this).parents('tr').attr('data-heart');
+      var oxygen=$(this).parents('tr').attr('data-oxygen');
+      var temp=$(this).parents('tr').attr('data-temp');
+      var dor=$(this).parents('tr').attr('data-dor');
+      var cond=$(this).parents('tr').attr('data-cond');
+
+      $(this).parents('tr').find('td:eq(1)').html("<input name='edit_number' value='"+id+"'>");
+      $(this).parents('tr').find('td:eq(0)').html("<input name='edit_text' value='"+name+"'>");
+      $(this).parents('tr').find('td:eq(1)').html("<input name='edit_number' value='"+heart+"'>");$(this).parents('tr').find('td:eq(1)').html("<input name='edit_number' value='"+oxygen+"'>");$(this).parents('tr').find('td:eq(1)').html("<input name='edit_number' value='"+temp+"'>");
+      $(this).parents('tr').find('td:eq(1)').html("<input name='edit_date' value='"+dor+"'>");
+      $(this).parents('tr').find('td:eq(1)').html("<input name='edit_text' value='"+cond+"'>");
+
+      $(this).parents('tr').find('td:eq(2)').prepend("<button type='button' class='btn btn-info btn-lg btn-update mr-3'>Update</button>");
+      $(this).hide()
+    });
+
+    $('body').on('click','.btn-update',function() {
+      var id=$(this).parents('tr').find("input[name='edit_number']").val();
+      var name=$(this).parents('tr').find("input[name='edit_text']").val();
+      var heart=$(this).parents('tr').find("input[name='edit_number']").val();
+      var oxygen=$(this).parents('tr').find("input[name='edit_number']").val();
+      var temp=$(this).parents('tr').find("input[name='edit_number']").val();
+      var dor=$(this).parents('tr').find("input[name='edit_date']").val();
+      var cond=$(this).parents('tr').find("input[name='edit_text']").val();
+      
+      $(this).parents('tr').find('td:eq(0)').text(id);
+      $(this).parents('tr').find('td:eq(1)').text(name);
+      $(this).parents('tr').find('td:eq(2)').text(heart);
+      $(this).parents('tr').find('td:eq(3)').text(oxygen);
+      $(this).parents('tr').find('td:eq(4)').text(temp);
+      $(this).parents('tr').find('td:eq(5)').text(dor);
+      $(this).parents('tr').find('td:eq(6)').text(cond);
+
+      $(this).parents('tr').attr('data-email',id);
+      $(this).parents('tr').attr('data-name',name);
+      $(this).parents('tr').attr('data-name',heart);
+      $(this).parents('tr').attr('data-email',oxygen);
+      $(this).parents('tr').attr('data-name',temp);
+      $(this).parents('tr').attr('data-email',dor);
+      $(this).parents('tr').attr('data-name',cond);
+    
+
+      $(this).parents('tr').find('.btn-edit').show();
+      $(this).parents('tr').find('.btn-update').remove();
+
+
+    })
+
+   </script>
+</body>
+</html>
