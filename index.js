@@ -19,10 +19,10 @@ function setCondition(temp, oxygen, heart){
   if (temp < 100 && oxygen > 95 && heart == 70){
     cond = 'Healthy';
   }
-  else if (temp > 100 && oxygen < 95 && heart == 70){
+  else if (temp > 100 && oxygen < 95  && oxygen > 90 && heart >= 70 && heart < 100){
     cond = 'Mild';
   }
-  else if (temp > 102 || oxygen < 90){
+  else if (heart > 100 && temp > 102 || oxygen < 90){
     cond = 'Severe';
   }
   return cond;
